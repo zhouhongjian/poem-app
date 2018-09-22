@@ -35,23 +35,25 @@ class App extends Component {
 		return (
 			<section className="container">
 				<ReactiveBase
-					app="gitxplore-app"
-					credentials="4oaS4Srzi:f6966181-1eb4-443c-8e0e-b7f38e7bc316"
-					type="gitxplore-latest"
+					app="shi_tang_poem,shi_song_poem"
+					// credentials="4oaS4Srzi:f6966181-1eb4-443c-8e0e-b7f38e7bc316"
+					type="doc"
+					url="http://127.0.0.1:9200"
 					theme={theme}
 				>
 					<div className="flex row-reverse app-container">
 						<Header currentTopics={this.state.currentTopics} setTopics={this.setTopics} />
 						<div className="results-container">
 							<DataSearch
-								componentId="repo"
-								filterLabel="Search"
-								dataField={['name', 'description', 'name.raw', 'fullname', 'owner', 'topics']}
-								placeholder="Search Repos"
+								componentId="poemContent"
+								// filterLabel="内容"
+								dataField="paragraphs"
+								placeholder="搜索诗词内容"
 								iconPosition="left"
 								autosuggest={false}
 								URLParams
 								className="data-search-container results-container"
+								// className="search"
 								innerClass={{
 									input: 'search-input',
 								}}

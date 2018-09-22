@@ -11,21 +11,19 @@ const onResultStats = (results, time) => (
 );
 
 const onData = (data, currentTopics, toggleTopic) => (
-	<div className="result-item" key={data.fullname}>
+	<div className="result-item" key={data.title}>
 		<div className="flex justify-center align-center result-card-header">
-			<img className="avatar" src={data.avatar} alt="User avatar" />
-			<a className="link" href={data.url} target="_blank" rel="noopener noreferrer">
-				<div className="flex wrap">
-					<div>{data.owner}/</div>
-					<div>{data.name}</div>
-				</div>
-			</a>
+			<img className="avatar" src={'http://o6r75vmbt.bkt.clouddn.com/assets/img/album-frame-suse' + Math.ceil(Math.random() * 3) + '.png'} alt="User avatar" />
+			<div className="link flex wrap">
+				{data.title}
+			</div>
 		</div>
-		<div className="m10-0">{data.description}</div>
+		<div className="author">{data.dynasty}/{data.author}</div>
+		<div className="m10-0"><p>{data.paragraphs.map(v => <p key={v}>{v}</p>)}</p></div>
 		<div className="flex wrap justify-center">
 			{
-				data.topics.slice(0, 7)
-					.map(item => (
+				data.tags ?
+					data.tags.slice(0, 7).map(item => (
 						<Topic
 							key={item}
 							active={currentTopics.includes(item)}
@@ -33,7 +31,7 @@ const onData = (data, currentTopics, toggleTopic) => (
 						>
 							{item}
 						</Topic>
-					))
+					)) : ''
 			}
 		</div>
 		<div className="flex">
@@ -51,9 +49,10 @@ const Results = ({ toggleTopic, currentTopics }) => (
 			componentId="results"
 			dataField="name"
 			onData={data => onData(data, currentTopics, toggleTopic)}
-			onResultStats={onResultStats}
+			// onResultStats={onResultStats}
 			react={{
-				and: ['language', 'topics', 'pushed', 'created', 'stars', 'forks', 'repo'],
+				and: ['title', 'inputAuthor', 'dynasty', 'poemContent', 'topics', 'strains'],
+				// or: ['selectAuthor']   selectAuthor与inputAuthor查询条件重复，暂时不做查询，只用来展示统计数据
 			}}
 			pagination
 			innerClass={{
@@ -65,49 +64,14 @@ const Results = ({ toggleTopic, currentTopics }) => (
 			size={6}
 			sortOptions={[
 				{
-					label: 'Best Match',
+					label: '相关度排序',
 					dataField: '_score',
 					sortBy: 'desc',
 				},
 				{
-					label: 'Most Stars',
-					dataField: 'stars',
+					label: '按标题升序',
+					dataField: 'dynasty',
 					sortBy: 'desc',
-				},
-				{
-					label: 'Fewest Stars',
-					dataField: 'stars',
-					sortBy: 'asc',
-				},
-				{
-					label: 'Most Forks',
-					dataField: 'forks',
-					sortBy: 'desc',
-				},
-				{
-					label: 'Fewest Forks',
-					dataField: 'forks',
-					sortBy: 'asc',
-				},
-				{
-					label: 'A to Z',
-					dataField: 'owner.raw',
-					sortBy: 'asc',
-				},
-				{
-					label: 'Z to A',
-					dataField: 'owner.raw',
-					sortBy: 'desc',
-				},
-				{
-					label: 'Recently Updated',
-					dataField: 'pushed',
-					sortBy: 'desc',
-				},
-				{
-					label: 'Least Recently Updated',
-					dataField: 'pushed',
-					sortBy: 'asc',
 				},
 			]}
 		/>
