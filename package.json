@@ -1,18 +1,18 @@
 {
-  "name": "gitxplore-app",
+  "name": "poem-app",
   "version": "1.0.0",
   "private": false,
   "author": {
-    "name": "Divyanshu Maithani",
-    "email": "div.blackcat@gmail.com",
-    "url": "https://github.com/divyanshu013"
+    "name": "zhouhongjian",
+    "email": "190303610@qq.com",
+    "url": "https://github.com/zhouhongjian"
   },
   "homepage": "https://appbaseio-apps.github.io/gitxplore-app",
   "dependencies": {
     "@appbaseio/reactivesearch": "^2.3.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-scripts": "1.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

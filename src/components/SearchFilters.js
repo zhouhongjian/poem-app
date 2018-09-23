@@ -12,7 +12,7 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 		<div className="child m10">
 			<TextField
 				componentId="title"
-				dataField="title.keyword"
+				dataField="title"
 				placeholder="输入诗名"
 				title="诗名"
 				filterLabel="诗名"

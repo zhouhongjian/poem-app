@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ReactiveBase, DataSearch } from '@appbaseio/reactivesearch';
+import { ReactiveBase, TextField } from '@appbaseio/reactivesearch';
 
 import Header from './components/Header';
 import Results from './components/Results';
@@ -44,7 +44,7 @@ class App extends Component {
 					<div className="flex row-reverse app-container">
 						<Header currentTopics={this.state.currentTopics} setTopics={this.setTopics} />
 						<div className="results-container">
-							<DataSearch
+							<TextField
 								componentId="poemContent"
 								// filterLabel="内容"
 								dataField="paragraphs"
@@ -53,7 +53,6 @@ class App extends Component {
 								autosuggest={false}
 								URLParams
 								className="data-search-container results-container"
-								// className="search"
 								innerClass={{
 									input: 'search-input',
 								}}

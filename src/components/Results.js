@@ -11,7 +11,7 @@ const onResultStats = (results, time) => (
 );
 
 const onData = (data, currentTopics, toggleTopic) => (
-	<div className="result-item" key={data.title}>
+	<div className="result-item" key={data.title+Math.random()}>
 		<div className="flex justify-center align-center result-card-header">
 			<img className="avatar" src={'http://o6r75vmbt.bkt.clouddn.com/assets/img/album-frame-suse' + Math.ceil(Math.random() * 3) + '.png'} alt="User avatar" />
 			<div className="link flex wrap">
@@ -19,7 +19,7 @@ const onData = (data, currentTopics, toggleTopic) => (
 			</div>
 		</div>
 		<div className="author">{data.dynasty}/{data.author}</div>
-		<div className="m10-0"><p>{data.paragraphs.map(v => <p key={v}>{v}</p>)}</p></div>
+		<div className="m10-0">{data.paragraphs.map(v => <p key={v}>{v}</p>)}</div>
 		<div className="flex wrap justify-center">
 			{
 				data.tags ?
@@ -35,7 +35,7 @@ const onData = (data, currentTopics, toggleTopic) => (
 			}
 		</div>
 		<div className="flex">
-			<div><div className="btn card-btn"><i className="card-icon fas fa-star" />{data.stars}</div></div>
+			<div><div className="btn card-btn"><i className="card-icon fas fa-star" /></div></div>
 			<div><div className="btn card-btn"><i className="card-icon fas fa-code-branch" />{data.forks}</div></div>
 			<div><div className="btn card-btn"><i className="card-icon fas fa-eye" />{data.watchers}</div></div>
 		</div>
@@ -49,7 +49,7 @@ const Results = ({ toggleTopic, currentTopics }) => (
 			componentId="results"
 			dataField="name"
 			onData={data => onData(data, currentTopics, toggleTopic)}
-			// onResultStats={onResultStats}
+			onResultStats={onResultStats}
 			react={{
 				and: ['title', 'inputAuthor', 'dynasty', 'poemContent', 'topics', 'strains'],
 				// or: ['selectAuthor']   selectAuthor与inputAuthor查询条件重复，暂时不做查询，只用来展示统计数据
@@ -61,6 +61,7 @@ const Results = ({ toggleTopic, currentTopics }) => (
 				resultsInfo: 'result-list-info',
 				poweredBy: 'powered-by',
 			}}
+			from={0}
 			size={6}
 			sortOptions={[
 				{
@@ -69,7 +70,12 @@ const Results = ({ toggleTopic, currentTopics }) => (
 					sortBy: 'desc',
 				},
 				{
-					label: '按标题升序',
+					label: '按朝代升序',
+					dataField: 'dynasty',
+					sortBy: 'asc',
+				},
+				{
+					label: '按朝代降序',
 					dataField: 'dynasty',
 					sortBy: 'desc',
 				},

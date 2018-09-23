@@ -21,7 +21,7 @@ class Header extends Component {
 		return (
 			<nav className={`navbar ${this.state.visible ? 'active' : ''}`}>
 				<div className="title">诗词检索</div>
-				<div className="btn toggle-btn" onClick={this.toggleVisibility}>Toggle Filters</div>
+				<div className="btn toggle-btn" onClick={this.toggleVisibility}>条件过滤器</div>
 				<SearchFilters {...this.props} visible={this.state.visible} />
 			</nav>
 		);
