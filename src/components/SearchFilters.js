@@ -46,7 +46,7 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 				placeholder="选择话题"
 				title="话题"
 				filterLabel="话题"
-				size={1000}
+				size={100}
 				queryFormat="and"
 				defaultSelected={currentTopics}
 				onValueChange={setTopics}
@@ -59,7 +59,7 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 				placeholder="选择平仄声调"
 				title="诗句平仄"
 				filterLabel="诗句平仄"
-				size={1000}
+				size={100}
 				queryFormat="and"
 			/>
 		</div>
