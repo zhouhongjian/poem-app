@@ -73,6 +73,7 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 				showCount={true}
 				sortBy="count"
 				queryFormat="and"
+				showFilter={false}
 			/>
 		</div>
 
